@@ -21,7 +21,27 @@
             align-items: center;
             height: 100vh;
         }
-        
+
+        .menu-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 100%;
+            height: 5px;
+            background-color: white;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
         .container {
             max-width: 600px;
             display: flex;
@@ -71,6 +91,14 @@
     </style>
 </head>
 <body>
+
+    <!-- Hamburger-Menü -->
+    <div class="menu-icon">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
     <div class="container">
         <h1>Soon Available</h1>
         <a href="https://discord.com/oauth2/authorize?client_id=1271492050050879529">
@@ -83,8 +111,6 @@
         <a href="https://discord.com/privacy">Privacy</a>
         <div class="copyright">© 2025 - KEKS</div>
     </div>
-</body>
-</html>
 
 </body>
 </html>

@@ -21,10 +21,26 @@
             align-items: center;
             height: 100vh;
         }
+        
         .container {
             max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
+        /* Abstand für den Text */
+        .container h1 {
+            margin-bottom: 20px; /* Abstand zum Bild */
+        }
+
+        /* Styling für das Bild */
+        .logo {
+            width: 200px; /* Größe des Bildes anpassen */
+            height: auto;
+        }
+
+        /* Footer Styling */
         .footer {
             position: absolute;
             bottom: 20px;
@@ -49,7 +65,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Soon Available</h1>
+        <h1 style="margin-bottom: 40px;">Soon Available</h1>
+        <img src="images/KEKS" alt="Logo" class="logo">
     </div>
 
     <div class="footer">
@@ -59,4 +76,5 @@
     </div>
 </body>
 </html>
+
 

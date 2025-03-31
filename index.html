@@ -16,6 +16,7 @@
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -23,11 +24,38 @@
         .container {
             max-width: 600px;
         }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            width: 100%;
+            color: #1f1d1d;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #1f1d1d;
+            font-size: 14px;
+            display: block;
+        }
+
+        .footer .copyright {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Soon Available</h1>
+    </div>
+
+    <div class="footer">
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+        <div class="copyright">© 2025 - KEKS</div>
     </div>
 </body>
 </html>

@@ -29,17 +29,24 @@
             align-items: center;
         }
 
-
         .container h1 {
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
 
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
 
         .logo {
             width: 200px;
             height: auto;
+            animation: rotate 5s linear infinite;
         }
-
 
         .footer {
             position: absolute;
@@ -65,7 +72,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 style="margin-bottom: 40px;">Soon Available</h1>
+        <h1>Soon Available</h1>
         <img src="images/KEKS.webp" alt="Logo" class="logo">
     </div>
 
@@ -76,5 +83,6 @@
     </div>
 </body>
 </html>
+
 
 

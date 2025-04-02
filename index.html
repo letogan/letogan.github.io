@@ -20,6 +20,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            position: relative;
         }
 
         .menu-icon {
@@ -62,10 +63,36 @@
             }
         }
 
+        .logo-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .logo {
-            width: 300px;
+            width: 150px;
             height: auto;
             animation: rotate 7s linear infinite;
+        }
+
+        .circle {
+            width: 180px;
+            height: 180px;
+            background-color: #222;
+            border-radius: 50%;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .rectangle {
+            width: 220px;
+            height: 100px;
+            background-color: #444;
+            position: absolute;
+            top: -60px;
+            border-radius: 10px;
+            z-index: -2;
         }
 
         .footer {
@@ -101,9 +128,13 @@
 
     <div class="container">
         <h1>Soon Available</h1>
-        <a href="https://discord.com/oauth2/authorize?client_id=1271492050050879529">
-            <img src="images/KEKS.webp" alt="Logo" class="logo">
-        </a>
+        <div class="logo-container">
+            <div class="circle"></div>
+            <div class="rectangle"></div>
+            <a href="https://discord.com/oauth2/authorize?client_id=1271492050050879529">
+                <img src="images/KEKS.webp" alt="Logo" class="logo">
+            </a>
+        </div>
     </div>
 
     <div class="footer">

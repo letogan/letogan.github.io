@@ -20,7 +20,6 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            position: relative;
         }
 
         .menu-icon {
@@ -54,12 +53,19 @@
             margin-bottom: 40px;
         }
 
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
         .logo {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 50px;
+            width: 300px;
             height: auto;
+            animation: rotate 7s linear infinite;
         }
 
         .footer {
@@ -93,11 +99,10 @@
         <div></div>
     </div>
 
-    <img src="images/KEKS.webp" alt="Logo" class="logo">
-    
     <div class="container">
         <h1>Soon Available</h1>
         <a href="https://discord.com/oauth2/authorize?client_id=1271492050050879529">
+            <img src="images/KEKS.webp" alt="Logo" class="logo">
         </a>
     </div>
 

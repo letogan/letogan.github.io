@@ -6,7 +6,7 @@
     <title>KEKS Dashboard</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
-
+    
     <style>
         body {
             font-family: 'League Spartan', sans-serif;
@@ -32,6 +32,7 @@
             flex-direction: column;
             justify-content: space-between;
             cursor: pointer;
+            z-index: 10;
         }
 
         .menu-icon div {
@@ -40,6 +41,35 @@
             background-color: white;
             border-radius: 10px;
             transition: 0.3s;
+        }
+
+        .menu {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: #171616;
+            border: 2px solid #5d5d67;
+            color: white;
+            width: 300px;
+            display: none;
+            flex-direction: column;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            font-family: 'League Spartan', sans-serif;
+        }
+
+        .menu a {
+            padding: 20px;
+            text-decoration: none;
+            color: white;
+            display: block;
+            transition: 0.3s;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .menu a:hover {
+            background-color: #5d5d67;
         }
 
         .container {
@@ -91,11 +121,15 @@
     </style>
 </head>
 <body>
+    <div class="menu-icon" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
 
-    <div class="menu-icon">
-        <div></div>
-        <div></div>
-        <div></div>
+    <div class="menu" id="menu">
+        <a href="https://discord.com/oauth2/authorize?client_id=1271492050050879529"><b>INVITE</b></a>
+        <a href="kontakt@keks-app.de"><b>KONTAKT</b></a>
     </div>
 
     <div class="container">
@@ -111,5 +145,15 @@
         <div class="copyright">© 2025 - KEKS</div>
     </div>
 
+    <script>
+        function toggleMenu() {
+            let menu = document.getElementById("menu");
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "flex";
+            }
+        }
+    </script>
 </body>
 </html>

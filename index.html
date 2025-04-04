@@ -182,7 +182,6 @@
             margin-top: 5px;
         }
 
-        /* ✅ Wasserzeichen-Stil */
         .watermark {
             position: absolute;
             top: 10px;
@@ -195,6 +194,58 @@
             font-weight: bold;
             pointer-events: none;
             z-index: 100;
+        }
+
+        /* 🔽 Responsive Anpassungen */
+        @media (max-width: 900px) {
+            .center-box {
+                width: 90%;
+                height: 70px;
+            }
+
+            .chat-input {
+                font-size: 20px;
+                width: 85%;
+            }
+
+            .logo {
+                width: 140px;
+            }
+
+            .menu {
+                width: 90%;
+                right: 5%;
+            }
+
+            .menu a {
+                font-size: 20px;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .chat-input {
+                font-size: 18px;
+            }
+
+            .tip-icon {
+                font-size: 24px;
+            }
+
+            .tooltip {
+                font-size: 16px;
+                max-width: 220px;
+            }
+
+            .footer a,
+            .footer .copyright {
+                font-size: 12px;
+            }
+
+            .watermark {
+                font-size: 14px;
+                padding: 4px 10px;
+            }
         }
     </style>
 </head>
@@ -223,7 +274,7 @@
                 <input type="text" placeholder="Nachricht an @KEKS" class="chat-input">
             </div>
             <div class="tip-container">
-                <span class="tip-icon" onclick="toggleTooltip()">💡</span>
+                <span class="tip-icon">💡</span>
                 <div class="tooltip" id="tooltip">
                     Nutze /help<br>
                 </div>
@@ -246,29 +297,6 @@
         function reloadPage() {
             location.reload();
         }
-
-        function toggleTooltip() {
-            const tooltip = document.getElementById("tooltip");
-            const isVisible = tooltip.style.visibility === "visible" || tooltip.style.opacity === "1";
-            
-            if (isVisible) {
-                tooltip.style.visibility = "hidden";
-                tooltip.style.opacity = "0";
-            } else {
-                tooltip.style.visibility = "visible";
-                tooltip.style.opacity = "1";
-            }
-        }
-
-        document.addEventListener('click', function(event) {
-            const tipContainer = document.querySelector('.tip-container');
-            const tooltip = document.getElementById("tooltip");
-
-            if (!tipContainer.contains(event.target)) {
-                tooltip.style.visibility = "hidden";
-                tooltip.style.opacity = "0";
-            }
-        });
     </script>
 </body>
 </html>

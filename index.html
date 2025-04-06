@@ -194,15 +194,6 @@
             font-weight: bold;
             pointer-events: none;
             z-index: 100;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .github-icon {
-            width: 20px;
-            height: auto;
-            cursor: pointer;
         }
 
         @media (max-width: 900px) {
@@ -258,12 +249,7 @@
     </style>
 </head>
 <body>
-    <div class="watermark">
-        work in progress - build 1.1
-        <a href="https://github.com/letogan" target="_blank">
-            <img src="images/github.png" alt="GitHub" class="github-icon">
-        </a>
-    </div>
+    <div class="watermark">work in progress - build 1.1</div>
 
     <div class="menu-icon" onclick="toggleMenu()">
         <div></div>
@@ -295,11 +281,11 @@
         </div>
     </div>
 
-    <div class="footer">
-        <a href="https://keks-app.de/terms">Terms</a>
-        <a href="https://keks-app.de/privacy">Privacy</a>
-        <div class="copyright">© 2025 - KEKS</div>
-    </div>
+  <div class="footer">
+    <a href="https://keks-app.de/terms">Terms</a>
+    <a href="https://keks-app.de/privacy">Privacy</a>
+    <div class="copyright">© 2025 - KEKS</div>
+  </div>
 
     <script>
         function toggleMenu() {

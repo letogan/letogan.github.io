@@ -183,18 +183,26 @@
         }
 
         .watermark {
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            font-size: 18px;
-            color: #5d5d67;
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-weight: bold;
-            pointer-events: none;
-            z-index: 100;
-        }
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 18px;
+    color: #5d5d67;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.github-icon {
+    width: 20px;
+    height: auto;
+}
 
         @media (max-width: 900px) {
             .center-box {
@@ -249,7 +257,12 @@
     </style>
 </head>
 <body>
-    <div class="watermark">work in progress - build 1.1</div>
+    <div class="watermark">
+    work in progress - build 1.2
+    <a href="https://github.com/letogan" target="_blank">
+        <img src="images/github.png" alt="GitHub" class="github-icon">
+    </a>
+</div>
 
     <div class="menu-icon" onclick="toggleMenu()">
         <div></div>

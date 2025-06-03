@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KEKS Home</title>
+    <title>KEKS Dashboard</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
 
@@ -22,25 +22,15 @@
             height: 100vh;
         }
 
-        .branding {
-            position: absolute;
-            top: 100px;
-            left: 100px;
-            text-align: center;
-            font-size: 50px;
-            font-weight: 700;
-            line-height: 1.2;
-            color: #edab54;
-        }
-
         .container {
             max-width: 600px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: absolute;
-            bottom: 100px;
-            z-index: 5;
+        }
+
+        .container h1 {
+            margin-bottom: 40px;
         }
 
         @keyframes rotate {
@@ -52,156 +42,26 @@
             }
         }
 
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.3);
-            }
-        }
-
         .logo {
             width: 300px;
             height: auto;
             animation: rotate 7s linear infinite;
-            display: block;
-            margin: 0 auto;
         }
 
-        .menu-icon {
-            position: absolute;
-            top: 100px;
-            right: 100px;
-            width: 50px;
-            height: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            cursor: pointer;
-        }
-
-        .menu-icon span {
-            height: 10px;
-            background-color: #edab54;
-            border-radius: 2px;
-            transition: 0.3s;
-        }
-
-        .menu-content {
-            position: absolute;
-            top: 60px;
-            right: 30px;
-            background-color: #222;
-            padding: 10px;
-            border-radius: 8px;
-            display: none;
-            flex-direction: column;
-        }
-
-        .menu-content a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 0;
-            display: block;
-        }
-
-        .menu-content a:hover {
-            text-decoration: underline;
-        }
-
-        .about-section {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 20;
-        }
-
-        .about-text {
-            font-size: 50px;
-            font-weight: 700;
-            color: #edab54;
-            cursor: pointer;
-        }
-
-        .arrow-icon {
-            width: 30px;
-            height: 30px;
-            margin-top: 15px;
-            cursor: pointer;
-            position: relative;
-            animation: pulse 2s infinite;
-        }
-
-        .arrow-icon:before,
-        .arrow-icon:after {
-            content: "";
-            position: absolute;
-            width: 21.5px;
-            height: 10px;
-            background-color: #edab54;
-            border-radius: 2px;
-        }
-
-        .arrow-icon:before {
-            transform: rotate(45deg);
-            left: 0;
-            top: 15px;
-        }
-
-        .arrow-icon:after {
-            transform: rotate(-45deg);
-            right: 0;
-            top: 15px;
-        }
-
-        .logo-wrapper {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-            pointer-events: none;
-        }
-
-        .logo-wrapper a, .logo-wrapper img {
-            pointer-events: auto;
+        .footer .copyright {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 5px;
         }
     </style>
-
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById("menu");
-            menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
-        }
-    </script>
 </head>
-
 <body>
-    <div class="branding">
-        KEKS<br>CLOUD
-    </div>
-
-    <div class="menu-icon" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-    </div>
-
-    <div class="menu-content" id="menu">
-        <a href="#">Eintrag 1</a>
-        <a href="#">Eintrag 2</a>
-    </div>
-
-    <a href="https://discord.com/oauth2/authorize?client_id=1271492050050879529" class="logo-wrapper">
-        <img src="images/KEKS.webp" alt="Logo" class="logo">
-    </a>
 
     <div class="container">
-        <div class="about-section">
-            <div class="about-text">ABOUT</div>
-            <div class="arrow-icon"></div>
-        </div>
+        <a href="https://discord.com/oauth2/authorizeclient_id1271492050050879529">
+            <img src="images/KEKS.webp" alt="Logo" class="logo">
+        </a>
     </div>
+
 </body>
 </html>

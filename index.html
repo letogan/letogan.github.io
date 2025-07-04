@@ -1,67 +1,400 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KEKS Dashboard</title>
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-            font-family: 'League Spartan', sans-serif;
-            text-align: center;
-            background-color: #111117;
-            color: white;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            max-width: 600px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .container h1 {
-            margin-bottom: 40px;
-        }
-
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .logo {
-            width: 300px;
-            height: auto;
-            animation: rotate 7s linear infinite;
-        }
-
-        .footer .copyright {
-            font-size: 16px;
-            font-weight: bold;
-            margin-top: 5px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Keks Cloud</title>
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #111117;
+      color: white;
+      font-family: 'League Spartan', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+    #particleCanvasBack, #particleCanvasFront {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      width: 100vw;
+      height: 100vh;
+    }
+    #particleCanvasBack {
+      z-index: 0;
+    }
+    #particleCanvasFront {
+      z-index: 3;
+    }
+    .header-wrapper {
+      position: relative;
+      width: 100%;
+      z-index: 10;
+      background-color: #111117;
+    }
+    .left-logo-label {
+      position: absolute;
+      top: 50%;
+      left: 500px;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      pointer-events: auto;
+      user-select: none;
+      text-decoration: none;
+      color: #edab54;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      font-size: 20px;
+      line-height: 1.2;
+      z-index: 11;
+    }
+    .left-logo-label img {
+      height: 50px;
+      width: auto;
+      pointer-events: none;
+    }
+    .left-logo-label .left-label {
+      text-align: center;
+    }
+    .login-button {
+      position: absolute;
+      top: 50%;
+      right: 500px;
+      background-color: #edab54;
+      border: none;
+      border-radius: 9999px;
+      padding: 10px 30px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 18px;
+      color: black;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s ease;
+      z-index: 11;
+      transform-origin: center;
+      transform: translateY(-50%) scaleX(-1);
+    }
+    .login-button > span {
+      display: inline-block;
+      transform: scaleX(-1);
+    }
+    .login-button:hover {
+      background-color: white;
+    }
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      z-index: 10;
+    }
+    .nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .nav-item {
+      text-decoration: none;
+      color: #edab54;
+      padding: 2px 20px;
+      transition: color 0.3s;
+    }
+    .nav-item:hover {
+      color: white;
+    }
+    .nav-home {
+      color: white;
+      text-decoration: none;
+      padding-bottom: 0px;
+      padding-left: 20px;
+      padding-right: 20px;
+      display: inline-block;
+      position: relative;
+    }
+    .nav-home::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 20px;
+      right: 20px;
+      height: 2px;
+      background-color: white;
+    }
+    .keks-cloud-logo {
+      position: fixed;
+      top: 50vh;
+      left: 57%;
+      transform: translate(-50%, -50%);
+      font-size: 80px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: #edab54;
+      text-transform: uppercase;
+      text-align: center;
+      pointer-events: none;
+      white-space: pre-line;
+      z-index: 1;
+    }
+    .keks-image {
+      position: fixed;
+      top: 50vh;
+      left: 43%;
+      transform-origin: center;
+      transform: translate(-50%, -50%) scaleX(-1);
+      width: 280px;
+      max-width: 30vw;
+      height: auto;
+      pointer-events: none;
+      z-index: 1;
+      animation: spin 100s linear infinite;
+    }
+    @keyframes spin {
+      from {
+        transform: translate(-50%, -50%) scaleX(-1) rotate(0deg);
+      }
+      to {
+        transform: translate(-50%, -50%) scaleX(-1) rotate(-360deg);
+      }
+    }
+    .keks-glow {
+      position: fixed;
+      top: 50vh;
+      left: 43%;
+      transform: translate(-50%, -50%);
+      width: 0px;
+      height: 0px;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.5) 0%,
+        rgba(255, 255, 255, 0.15) 40%,
+        rgba(255, 255, 255, 0.05) 70%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      filter: blur(100px);
+    }
+    .cloud-glow {
+      position: fixed;
+      top: 50vh;
+      left: 57%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.5) 0%,
+        rgba(255, 255, 255, 0.15) 40%,
+        rgba(255, 255, 255, 0.05) 70%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      filter: blur(60px);
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <a href="https://discord.com/oauth2/authorizeclient_id1271492050050879529">
-            <img src="images/KEKS.webp" alt="Logo" class="logo">
-        </a>
-    </div>
+  <canvas id="particleCanvasBack"></canvas>
+  <canvas id="particleCanvasFront"></canvas>
+
+  <div class="header-wrapper">
+    <a href="https://kekscloud.com" class="left-logo-label" aria-label="Zur Startseite Keks Cloud">
+      <img src="images/KEKS.webp" alt="Keks Logo" />
+      <div class="left-label">KEKS<br>CLOUD</div>
+    </a>
+    <a href="https://kekscloud.com/login" class="login-button" aria-label="Log in">
+      <span>Log in</span>
+    </a>
+    <header>
+      <nav class="nav">
+        <a href="https://kekscloud.com" class="nav-home">HOME</a>
+        <a href="https://kekscloud.com/about" class="nav-item">ABOUT</a>
+        <a href="https://kekscloud.com/support" class="nav-item">SUPPORT</a>
+        <a href="https://kekscloud.com/status" class="nav-item">STATUS</a>
+      </nav>
+    </header>
+  </div>
+
+  <div class="keks-cloud-logo">KEKS<br>CLOUD</div>
+  <div class="cloud-glow"></div>
+
+  <img src="images/KEKS.webp" alt="KEKS Logo" class="keks-image" />
+  <div class="keks-glow"></div>
+
+<script>
+const canvasBack = document.getElementById('particleCanvasBack');
+const ctxBack = canvasBack.getContext('2d');
+const canvasFront = document.getElementById('particleCanvasFront');
+const ctxFront = canvasFront.getContext('2d');
+
+let width, height, centerX, centerY;
+
+const orbitRadiusX = 500;
+const orbitRadiusY = 300;
+const particleCount = 10;
+const particles = [];
+const colors = ['#edab54', 'white'];
+const speed = 0.003;
+
+const rotationAngleZ = -Math.PI / 4;
+const rotationAngleX = Math.PI / 10;
+
+let mouse = { x: null, y: null };
+let smoothedMouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+
+const launchDuration = 350;
+let startTime = null;
+
+function resize() {
+  width = window.innerWidth;
+  height = window.innerHeight;
+  centerX = width / 2;
+  centerY = height / 2;
+  canvasBack.width = width;
+  canvasBack.height = height;
+  canvasFront.width = width;
+  canvasFront.height = height;
+  smoothedMouse.x = centerX;
+  smoothedMouse.y = centerY;
+}
+
+window.addEventListener('resize', resize);
+window.addEventListener('mousemove', (e) => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+
+function lerp(start, end, amt) {
+  return (1 - amt) * start + amt * end;
+}
+
+function createParticles() {
+  for (let i = 0; i < particleCount; i++) {
+    const angle = (Math.PI * 2 / particleCount) * i;
+    const size = Math.random() * 170 + 114;
+    particles.push({
+      angle: angle,
+      progress: 0,
+      baseSize: size,
+      color: colors[i % colors.length],
+    });
+  }
+}
+
+function rotateX(y, z, angle) {
+  const cosA = Math.cos(angle);
+  const sinA = Math.sin(angle);
+  const newY = y * cosA - z * sinA;
+  const newZ = y * sinA + z * cosA;
+  return { y: newY, z: newZ };
+}
+
+function drawGroup(ctx, group, elapsed) {
+  group.forEach(p => {
+    p.progress = 1;
+    p.angle += speed;
+
+    const zDepth = (Math.sin(p.angle) + 1) / 2;
+    const scale = 0.4 + zDepth * 0.6;
+    const radius = p.baseSize * scale;
+
+    const cosAngle = Math.cos(p.angle);
+    const sinAngle = Math.sin(p.angle);
+    const cosRotZ = Math.cos(rotationAngleZ);
+    const sinRotZ = Math.sin(rotationAngleZ);
+
+    let x = cosAngle * orbitRadiusX;
+    let y = sinAngle * orbitRadiusY;
+    let z = 0;
+
+    let rotatedX = cosRotZ * x - sinRotZ * y;
+    let rotatedY = sinRotZ * x + cosRotZ * y;
+    let rotatedZ = z;
+
+    const rotatedXYZ = rotateX(rotatedY, rotatedZ, rotationAngleX);
+    rotatedY = rotatedXYZ.y;
+    rotatedZ = rotatedXYZ.z;
+
+    let targetX = centerX + rotatedX;
+    let targetY = centerY + rotatedY;
+
+    let posX = lerp(centerX, targetX, p.progress);
+    let posY = lerp(centerY, targetY, p.progress);
+
+    if (mouse.x !== null && mouse.y !== null) {
+      const dx = posX - smoothedMouse.x;
+      const dy = posY - smoothedMouse.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 150) {
+        const repelForce = (150 - dist) * 0.045;
+        posX += (dx / dist) * repelForce;
+        posY += (dy / dist) * repelForce;
+      }
+    }
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(posX, posY, radius / 2, 0, Math.PI * 2);
+
+    ctx.shadowColor = p.color;
+    ctx.shadowBlur = 70 * scale * 1.2;
+    ctx.globalAlpha = 0.5 + zDepth * 0.5;
+    ctx.fillStyle = p.color;
+    ctx.fill();
+    ctx.restore();
+  });
+}
+
+function drawParticles(timestamp) {
+  if (!startTime) startTime = timestamp;
+  const elapsed = timestamp - startTime;
+
+  if (mouse.x !== null && mouse.y !== null) {
+    smoothedMouse.x = lerp(smoothedMouse.x, mouse.x, 0.1);
+    smoothedMouse.y = lerp(smoothedMouse.y, mouse.y, 0.1);
+  }
+
+  ctxBack.clearRect(0, 0, width, height);
+  ctxFront.clearRect(0, 0, width, height);
+
+  const sortedParticles = [...particles].sort((a, b) => Math.sin(a.angle) - Math.sin(b.angle));
+  const backParticles = sortedParticles.filter(p => ((Math.sin(p.angle) + 1) / 2) <= 0.5);
+  const frontParticles = sortedParticles.filter(p => ((Math.sin(p.angle) + 1) / 2) > 0.5);
+
+  drawGroup(ctxBack, backParticles, elapsed);
+  drawGroup(ctxFront, frontParticles, elapsed);
+}
+
+function animate(timestamp) {
+  drawParticles(timestamp);
+  requestAnimationFrame(animate);
+}
+
+resize();
+createParticles();
+requestAnimationFrame(animate);
+</script>
 
 </body>
 </html>

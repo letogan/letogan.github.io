@@ -30,7 +30,7 @@ body {
   text-decoration: none; color: #edab54; font-weight: 700;
   letter-spacing: 0.01em; text-transform: uppercase;
   font-size: 20px; line-height: 1.2; z-index: 11;
-  text-align: center;
+  text-align: center; /* korrigiert */
 }
 .left-logo-label img { height: 50px; width: auto; pointer-events: none; }
 .login-button {
@@ -123,7 +123,7 @@ footer {
   color: #edab54; font-weight: 700;
   letter-spacing: 0.01em; text-transform: uppercase;
   font-size: 30px; line-height: 1.2;
-  text-align: center;
+  text-align: center; /* korrigiert */
 }
 .footer-links {
   flex: 2; min-width: 250px;
@@ -145,86 +145,127 @@ footer {
 }
 .footer-copyright { text-align: center; }
 
-/* Mobile Responsive */
+
+/* Responsive Mobile Styles */
 @media (max-width: 768px) {
+  /* Header Wrapper stacked */
+  .header-wrapper {
+    position: relative;
+    background-color: #111117;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    z-index: 10;
+  }
+
+  /* Logo label centered and static */
   .left-logo-label {
-    position: fixed;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 16px;
-    gap: 6px;
+    position: static !important;
+    transform: none !important;
+    font-size: 18px;
+    gap: 8px;
+    justify-content: center;
+    left: auto !important;
+    top: auto !important;
+    text-align: center;
   }
   .left-logo-label img {
     height: 40px;
   }
+
+  /* Login button static and no transform */
   .login-button {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    padding: 8px 20px;
-    font-size: 14px;
-    transform: none;
+    position: static !important;
+    transform: none !important;
+    padding: 10px 25px;
+    font-size: 16px;
+    margin-top: 5px;
   }
   .login-button > span {
-    transform: none;
+    transform: none !important;
   }
+
+  /* Header and Nav vertical */
   header {
-    padding: 15px 10px;
-    font-size: 14px;
+    padding: 0;
+    width: 100%;
   }
   .nav {
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
   }
   .nav-item, .nav-home {
-    padding: 8px 12px;
-    font-size: 14px;
+    padding: 6px 12px;
+    font-size: 15px;
   }
+  .nav-home::after {
+    left: 10px;
+    right: 10px;
+  }
+
+  /* Keks Cloud Logo centered and smaller */
   .keks-cloud-logo {
-    position: fixed;
-    top: 60vh;
-    left: 50%;
-    font-size: 50px;
-    width: 90vw;
-    white-space: normal;
+    position: static !important;
+    transform: none !important;
+    font-size: 48px;
+    margin: 30px 0 10px 0;
+    width: 100%;
+    text-align: center;
   }
+
+  /* Keks Image centered and smaller */
   .keks-image {
-    position: fixed;
-    top: 55vh;
-    left: 50%;
+    position: static !important;
+    transform: none !important;
     width: 180px;
     max-width: 60vw;
+    margin: 0 auto 30px auto;
+    display: block;
+    animation: spin 100s linear infinite;
   }
+
+  /* Glows adjusted */
   .keks-glow, .cloud-glow {
+    position: static !important;
+    transform: none !important;
     filter: blur(60px);
-  }
-  .cloud-glow {
+    margin: 0 auto 30px auto;
     width: 40px;
     height: 40px;
   }
+
+  /* Footer responsive */
   footer {
-    position: static;
+    position: static !important;
     padding: 40px 20px;
+    text-align: center;
   }
   .footer-content {
     flex-direction: column;
+    align-items: center;
     gap: 24px;
-    align-items: flex-start;
   }
   .footer-brand-inner {
-    gap: 10px;
+    justify-content: center;
+    gap: 12px;
   }
   .footer-brand-inner img {
     height: 60px;
   }
   .footer-brand-inner .left-label {
     font-size: 24px;
+    text-align: center;
   }
   .footer-links {
-    justify-content: flex-start;
-    gap: 32px;
-    width: 100%;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+  }
+  .footer-column {
+    align-items: center;
   }
   .footer-column-title {
     padding-bottom: 8px;
@@ -235,5 +276,8 @@ footer {
   }
   .footer-divider {
     margin: 24px 0;
+  }
+  .footer-copyright {
+    font-size: 14px;
   }
 }

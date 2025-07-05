@@ -144,3 +144,96 @@ footer {
   margin: 32px 0;
 }
 .footer-copyright { text-align: center; }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .left-logo-label {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    gap: 6px;
+  }
+  .left-logo-label img {
+    height: 40px;
+  }
+  .login-button {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    padding: 8px 20px;
+    font-size: 14px;
+    transform: none;
+  }
+  .login-button > span {
+    transform: none;
+  }
+  header {
+    padding: 15px 10px;
+    font-size: 14px;
+  }
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-item, .nav-home {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  .keks-cloud-logo {
+    position: fixed;
+    top: 60vh;
+    left: 50%;
+    font-size: 50px;
+    width: 90vw;
+    white-space: normal;
+  }
+  .keks-image {
+    position: fixed;
+    top: 55vh;
+    left: 50%;
+    width: 180px;
+    max-width: 60vw;
+  }
+  .keks-glow, .cloud-glow {
+    filter: blur(60px);
+  }
+  .cloud-glow {
+    width: 40px;
+    height: 40px;
+  }
+  footer {
+    position: static;
+    padding: 40px 20px;
+  }
+  .footer-content {
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .footer-brand-inner {
+    gap: 10px;
+  }
+  .footer-brand-inner img {
+    height: 60px;
+  }
+  .footer-brand-inner .left-label {
+    font-size: 24px;
+  }
+  .footer-links {
+    justify-content: flex-start;
+    gap: 32px;
+    width: 100%;
+  }
+  .footer-column-title {
+    padding-bottom: 8px;
+    font-size: 14px;
+  }
+  .footer-link {
+    font-size: 14px;
+  }
+  .footer-divider {
+    margin: 24px 0;
+  }
+}

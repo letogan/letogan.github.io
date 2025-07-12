@@ -131,62 +131,67 @@ footer {
 .footer-copyright { text-align: center; }
 
 
+/* Responsive Mobile Styles */
 @media (max-width: 768px) {
-  /* Scrollen verhindern */
-  html, body {
-    height: 100%;
-    overflow: hidden;
-  }
-  body {
-    min-height: 100%;
-  }
-
+  /* Header Wrapper stacked */
   .header-wrapper {
     position: relative;
     background-color: #111117;
-    padding: 15px 20px 10px 20px;
+    padding: 15px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     z-index: 10;
   }
 
-  /* Login-Button über Header, mittig */
-  .login-button {
-    position: relative !important;
-    top: 0 !important;
-    left: 50%;
-    transform: translateX(-50%) !important;
-    padding: 10px 25px;
-    font-size: 16px;
-    margin-bottom: 10px !important;
-    order: -1; /* Button vor Header */
-    max-width: 90vw;
-    box-sizing: border-box;
+  /* Logo label centered and static */
+  .left-logo-label {
+    position: static !important;
+    transform: none !important;
+    font-size: 18px;
+    gap: 8px;
+    justify-content: center;
+    left: auto !important;
+    top: auto !important;
+    text-align: center;
+  }
+  .left-logo-label img {
+    height: 40px;
   }
 
+  /* Login button static and no transform */
+  .login-button {
+    position: static !important;
+    transform: none !important;
+    padding: 10px 25px;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+  .login-button > span {
+    transform: none !important;
+  }
+
+  /* Header and Nav vertical */
   header {
     padding: 0;
     width: 100%;
   }
-
   .nav {
     justify-content: center;
     flex-wrap: wrap;
     gap: 12px;
   }
-
   .nav-item, .nav-home {
     padding: 6px 12px;
     font-size: 15px;
   }
-
   .nav-home::after {
     left: 10px;
     right: 10px;
   }
 
+  /* Keks Cloud Logo centered and smaller */
   .keks-cloud-logo {
     position: static !important;
     transform: none !important;
@@ -196,6 +201,7 @@ footer {
     text-align: center;
   }
 
+  /* Keks Image centered and smaller */
   .keks-image {
     position: static !important;
     transform: none !important;
@@ -206,36 +212,57 @@ footer {
     animation: spin 100s linear infinite;
   }
 
-  .footer-links {
-    flex-direction: row !important;
-    flex-wrap: wrap;
-    justify-content: center !important;
-    gap: 32px !important;
+  /* Glows adjusted */
+  .keks-glow, .cloud-glow {
+    position: static !important;
+    transform: none !important;
+    filter: blur(60px);
+    margin: 0 auto 30px auto;
+    width: 40px;
+    height: 40px;
   }
 
+  /* Footer responsive */
+  footer {
+    position: static !important;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .footer-brand-inner {
+    justify-content: center;
+    gap: 12px;
+  }
+  .footer-brand-inner img {
+    height: 60px;
+  }
+  .footer-brand-inner .left-label {
+    font-size: 24px;
+    text-align: center;
+  }
+  .footer-links {
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+  }
   .footer-column {
     align-items: center;
   }
-
   .footer-column-title {
     padding-bottom: 8px;
     font-size: 14px;
   }
-
   .footer-link {
     font-size: 14px;
   }
-
   .footer-divider {
     margin: 24px 0;
   }
-
   .footer-copyright {
     font-size: 14px;
-  }
-
-  /* Script.js ausblenden in Media */
-  script[src="script.js"] {
-    display: none !important;
   }
 }

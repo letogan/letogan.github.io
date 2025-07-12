@@ -3,14 +3,13 @@
   padding: 0;
   box-sizing: border-box;
 }
-html, body {
+body {
   background-color: #111117;
   color: white;
   font-family: 'League Spartan', sans-serif;
   overflow-x: hidden;
   position: relative;
   min-height: 130vh;
-  height: auto;
 }
 #particleCanvasBack, #particleCanvasFront {
   position: absolute;
@@ -52,7 +51,6 @@ html, body {
   user-select: none;
   transition: background-color 0.3s ease;
   z-index: 11;
-  display: inline-block;
 }
 .login-button > span {
   display: inline-block;
@@ -197,35 +195,20 @@ script[src="script.js"] {
 }
 
 @media (max-width: 768px) {
-  html, body {
-    height: 100%;
-    overflow: hidden; /* Scroll komplett aus */
-  }
   body {
-    min-height: 100%;
+    overflow: hidden; /* Scrollen deaktivieren */
   }
   .header-wrapper {
     position: relative;
     background-color: #111117;
-    padding: 15px 20px 10px 20px;
+    padding: 15px 20px 30px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     z-index: 10;
   }
-  .login-button {
-    position: relative !important;
-    top: 0 !important;
-    left: 50%;
-    transform: translateX(-50%) !important;
-    padding: 10px 25px;
-    font-size: 16px;
-    margin-bottom: 10px !important;
-    order: -1;
-    max-width: 90vw;
-    box-sizing: border-box;
-  }
+
   header {
     padding: 0;
     width: 100%;
@@ -243,6 +226,18 @@ script[src="script.js"] {
     left: 10px;
     right: 10px;
   }
+
+  .login-button {
+    position: relative !important;
+    top: 0 !important;
+    left: 50%;
+    transform: translateX(-50%) !important;
+    padding: 10px 25px;
+    font-size: 16px;
+    margin-bottom: 10px !important; /* Abstand unter Button */
+    order: -1; /* Button vor Header im Flex-Container */
+  }
+
   .keks-cloud-logo {
     position: static !important;
     transform: none !important;
@@ -251,6 +246,7 @@ script[src="script.js"] {
     width: 100%;
     text-align: center;
   }
+
   .keks-image {
     position: static !important;
     transform: none !important;
@@ -260,25 +256,31 @@ script[src="script.js"] {
     display: block;
     animation: spin 100s linear infinite;
   }
+
   .footer-links {
     flex-direction: row !important;
     flex-wrap: wrap;
     justify-content: center !important;
     gap: 32px !important;
   }
+
   .footer-column {
     align-items: center;
   }
+
   .footer-column-title {
     padding-bottom: 8px;
     font-size: 14px;
   }
+
   .footer-link {
     font-size: 14px;
   }
+
   .footer-divider {
     margin: 24px 0;
   }
+
   .footer-copyright {
     font-size: 14px;
   }

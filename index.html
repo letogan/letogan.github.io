@@ -62,6 +62,13 @@
     <div class="footer-copyright">© 2025 KEKS CLOUD – All rights reserved.</div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    if (window.innerWidth > 768) {
+      const script = document.createElement('script');
+      script.src = 'script.js';
+      document.body.appendChild(script);
+    }
+  </script>
+
 </body>
 </html>

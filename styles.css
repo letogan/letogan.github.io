@@ -190,52 +190,58 @@ footer {
   font-size: 14px;
   text-align: center;
 }
-script[src="script.js"] {
-  display: none;
-}
 
+/* === MEDIA VERSION für Mobile (max-width: 768px) === */
 @media (max-width: 768px) {
-  body {
-    overflow: hidden; /* Scrollen deaktivieren */
+  html, body {
+    overflow: hidden;
+    max-height: 100vh;
+    position: relative;
   }
+
   .header-wrapper {
     position: relative;
     background-color: #111117;
-    padding: 15px 20px 30px 20px;
+    padding: 15px 20px 10px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
     z-index: 10;
+  }
+
+  /* LOGIN-BUTTON über dem Header, zentriert */
+  .login-button {
+    position: relative !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    padding: 10px 25px;
+    font-size: 16px;
+    margin-bottom: 5px !important;
+    z-index: 999;
+    order: -1;
   }
 
   header {
     padding: 0;
     width: 100%;
   }
+
   .nav {
     justify-content: center;
     flex-wrap: wrap;
     gap: 12px;
   }
+
   .nav-item, .nav-home {
     padding: 6px 12px;
     font-size: 15px;
   }
+
   .nav-home::after {
     left: 10px;
     right: 10px;
-  }
-
-  .login-button {
-    position: relative !important;
-    top: 0 !important;
-    left: 50%;
-    transform: translateX(-50%) !important;
-    padding: 10px 25px;
-    font-size: 16px;
-    margin-bottom: 10px !important; /* Abstand unter Button */
-    order: -1; /* Button vor Header im Flex-Container */
   }
 
   .keks-cloud-logo {

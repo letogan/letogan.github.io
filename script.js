@@ -5,12 +5,12 @@ const ctxFront = canvasFront.getContext('2d');
 
 let width, height, centerX, centerY;
 
-const orbitRadiusX = 500;
+const orbitRadiusX = 600;
 const orbitRadiusY = 300;
 const particleCount = 10;
 const particles = [];
 const colors = ['#edab54', 'white'];
-const speed = 0.003;
+const speed = 0.002;
 
 const rotationAngleZ = -Math.PI / 4;
 const rotationAngleX = Math.PI / 10;
@@ -46,7 +46,7 @@ function lerp(a, b, t) {
 function createParticles() {
   for (let i = 0; i < particleCount; i++) {
     const angle = (Math.PI * 2 / particleCount) * i;
-    const size = Math.random() * 160 + 114;
+    const size = Math.random() * 165 + 140;
     particles.push({
       angle: angle,
       progress: 0,
@@ -71,7 +71,6 @@ function drawGroup(ctx, group, elapsed) {
 
     const zDepth = (Math.sin(p.angle) + 1) / 2;
 
-    // Sanfte Übergänge per smootherstep easing
     const easedDepth = zDepth * zDepth * (3 - 2 * zDepth);
     const scale = 0.4 + easedDepth * 0.6;
     const radius = p.baseSize * scale;
@@ -104,13 +103,12 @@ function drawGroup(ctx, group, elapsed) {
       const dy = posY - smoothedMouse.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < 150 && dist > 0) {
-        const repelForce = (150 - dist) * 0.045;
+        const repelForce = (150 - dist) * 0;
         posX += (dx / dist) * repelForce;
         posY += (dy / dist) * repelForce;
       }
     }
 
-    // Zeichnen
     ctx.save();
     ctx.beginPath();
     ctx.arc(posX, posY, radius / 2, 0, Math.PI * 2);

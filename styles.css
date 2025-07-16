@@ -30,21 +30,58 @@ body {
   text-decoration: none; color: #edab54; font-weight: 700;
   letter-spacing: 0.01em; text-transform: uppercase;
   font-size: 20px; line-height: 1.2; z-index: 11;
-  text-align: center; /* korrigiert */
+  text-align: center;
 }
 .left-logo-label img { height: 50px; width: auto; pointer-events: none; }
 .login-button {
-  position: absolute; top: 50%; right: 500px;
-  background-color: #edab54; border: none; border-radius: 12px;
-  padding: 10px 30px; font-weight: 700;
+  position: absolute;
+  top: 50%;
+  right: 500px;
+  display: inline-block;
+  border-radius: 70px;
+  border: none;
+  background: #edab54;
+  color: black;
   font-family: 'League Spartan', sans-serif;
-  font-size: 16px; color: black; cursor: pointer;
-  user-select: none; transition: background-color 0.3s ease;
-  z-index: 11; transform-origin: center;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+  width: auto;
+  padding: 10px 30px;
+  transition: all 0.4s;
+  cursor: pointer;
+  user-select: none;
+  z-index: 11;
+  transform-origin: center;
   transform: translateY(-50%) scaleX(-1);
 }
-.login-button > span { display: inline-block; transform: scaleX(-1); }
-.login-button:hover { background-color: #edab54; }
+
+.login-button > span {
+  display: inline-block;
+  position: relative;
+  transition: 0.4s;
+  transform: scaleX(-1);
+}
+
+.login-button > span:after {
+  content: 'for free';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.7s;
+  color: black;
+}
+
+.login-button:hover > span {
+  padding-right: 3.55em;
+}
+
+.login-button:hover > span:after {
+  opacity: 1;
+  right: 0;
+}
+
 header {
   display: flex; justify-content: center; align-items: center;
   padding: 30px; font-weight: 700;
@@ -84,7 +121,7 @@ header {
   transform: translate(-50%, -50%) scaleX(-1);
   width: 280px; max-width: 30vw; height: auto;
   pointer-events: none; z-index: 1;
-  animation: spin 100s linear infinite;
+  animation: spin 100000000000s linear infinite;
 }
 @keyframes spin {
   from { transform: translate(-50%, -50%) scaleX(-1) rotate(0deg); }
@@ -108,7 +145,7 @@ footer {
   color: #edab54; font-weight: 700;
   letter-spacing: 0.01em; text-transform: uppercase;
   font-size: 30px; line-height: 1.2;
-  text-align: center; /* korrigiert */
+  text-align: center;
 }
 .footer-links {
   flex: 2; min-width: 250px;
@@ -131,9 +168,7 @@ footer {
 .footer-copyright { text-align: center; }
 
 
-/* Responsive Mobile Styles */
 @media (max-width: 768px) {
-  /* Header Wrapper stacked */
   .header-wrapper {
     position: relative;
     background-color: #111117;
@@ -145,7 +180,6 @@ footer {
     z-index: 10;
   }
 
-  /* Logo label centered and static */
   .left-logo-label {
     position: static !important;
     transform: none !important;
@@ -160,7 +194,6 @@ footer {
     height: 40px;
   }
 
-  /* Login button static and no transform */
   .login-button {
     position: static !important;
     transform: none !important;
@@ -172,7 +205,6 @@ footer {
     transform: none !important;
   }
 
-  /* Header and Nav vertical */
   header {
     padding: 0;
     width: 100%;
@@ -191,7 +223,6 @@ footer {
     right: 10px;
   }
 
-  /* Keks Cloud Logo centered and smaller */
   .keks-cloud-logo {
     position: static !important;
     transform: none !important;
@@ -201,7 +232,6 @@ footer {
     text-align: center;
   }
 
-  /* Keks Image centered and smaller */
   .keks-image {
     position: static !important;
     transform: none !important;
@@ -212,7 +242,6 @@ footer {
     animation: spin 100s linear infinite;
   }
 
-  /* Glows adjusted */
   .keks-glow, .cloud-glow {
     position: static !important;
     transform: none !important;
@@ -222,7 +251,6 @@ footer {
     height: 40px;
   }
 
-  /* Footer responsive */
   footer {
     position: static !important;
     padding: 40px 20px;

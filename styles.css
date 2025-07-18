@@ -22,16 +22,13 @@ body {
 #particleCanvasBack { z-index: 0; }
 #particleCanvasFront { z-index: 3; }
 
-/* HEADER */
 .header-wrapper {
   position: relative;
   width: 100%;
   z-index: 10;
   background-color: #111117;
-  height: 80px; /* für vertikale Zentrierung */
+  height: 80px;
 }
-
-/* Exakte absolute Positionierung auf großen Bildschirmen */
 .left-logo-label {
   position: absolute;
   top: 50%;
@@ -59,9 +56,6 @@ body {
 }
 
 .login-button {
-  position: absolute;
-  top: 50%;
-  right: 500px;
   display: inline-block;
   border-radius: 70px;
   border: none;
@@ -71,20 +65,16 @@ body {
   font-weight: 700;
   font-size: 20px;
   text-align: center;
-  width: auto;
   padding: 10px 30px;
   transition: all 0.4s;
   cursor: pointer;
   user-select: none;
   z-index: 11;
-  transform-origin: center;
-  transform: translateY(-50%) scaleX(-1);
 }
 .login-button > span {
   display: inline-block;
   position: relative;
   transition: 0.4s;
-  transform: scaleX(-1);
 }
 .login-button > span:after {
   content: 'for free';
@@ -182,7 +172,6 @@ header {
   }
 }
 
-/* FOOTER */
 footer {
   position: absolute;
   bottom: 0;
@@ -190,7 +179,7 @@ footer {
   right: 0;
   background-color: #111117;
   color: #EDAB54;
-  padding: 56px 500px; /* feste Abstände links und rechts */
+  padding: 56px 500px;
 }
 .footer-content {
   display: flex;
@@ -257,9 +246,6 @@ footer {
   text-align: center;
 }
 
-/* --------------- MEDIA QUERIES --------------- */
-
-/* Zwischen 1200px und 769px Fensterbreite: absolute Positionierung aufheben, flexibles Layout */
 @media (max-width: 1200px) {
   .header-wrapper {
     display: flex;
@@ -291,7 +277,6 @@ footer {
   }
 }
 
-/* Mobile Layout (<=768px): alles zentrieren, spaltenweise */
 @media (max-width: 768px) {
   .header-wrapper {
     flex-direction: column;
@@ -390,5 +375,17 @@ footer {
   }
   .footer-copyright {
     font-size: 14px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .login-button {
+    position: absolute;
+    top: 50%;
+    right: 500px;
+    transform: translateY(-50%) scaleX(-1);
+  }
+  .login-button > span {
+    transform: scaleX(-1);
   }
 }

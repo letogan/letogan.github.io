@@ -10,16 +10,15 @@ const orbitRadiusY = 300;
 const particleCount = 10;
 const particles = [];
 const colors = ['#edab54', 'white'];
-const speed = 0.002;
+const speed = 0.001;
 
 const rotationAngleZ = -Math.PI / 4;
 const rotationAngleX = Math.PI / 10;
 
-let rotationY = 0;
-const yRotationSpeed = 0.0005;
-
 let mouse = { x: null, y: null };
 let smoothedMouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+
+let startTime = null;
 
 function resize() {
   width = window.innerWidth;
@@ -47,7 +46,7 @@ function lerp(a, b, t) {
 function createParticles() {
   for (let i = 0; i < particleCount; i++) {
     const angle = (Math.PI * 2 / particleCount) * i;
-    const size = Math.random() * 150 + 135;
+    const size = Math.random() * 160 + 150;
     particles.push({
       angle: angle,
       progress: 0,
@@ -65,22 +64,13 @@ function rotateX(y, z, angle) {
   return { y: newY, z: newZ };
 }
 
-function rotateY(x, z, angle) {
-  const cosA = Math.cos(angle);
-  const sinA = Math.sin(angle);
-  const newX = x * cosA + z * sinA;
-  const newZ = -x * sinA + z * cosA;
-  return { x: newX, z: newZ };
-}
-
-function drawGroup(ctx, group) {
-  const dynamicRotationY = rotationY;
-
+function drawGroup(ctx, group, elapsed) {
   group.forEach(p => {
     p.progress = 1;
     p.angle += speed;
 
     const zDepth = (Math.sin(p.angle) + 1) / 2;
+
     const easedDepth = zDepth * zDepth * (3 - 2 * zDepth);
     const scale = 0.4 + easedDepth * 0.6;
     const radius = p.baseSize * scale;
@@ -98,13 +88,9 @@ function drawGroup(ctx, group) {
     let rotatedY = sinRotZ * x + cosRotZ * y;
     let rotatedZ = z;
 
-    const rotatedXYZ_X = rotateX(rotatedY, rotatedZ, rotationAngleX);
-    rotatedY = rotatedXYZ_X.y;
-    rotatedZ = rotatedXYZ_X.z;
-
-    const rotatedXYZ_Y = rotateY(rotatedX, rotatedZ, dynamicRotationY);
-    rotatedX = rotatedXYZ_Y.x;
-    rotatedZ = rotatedXYZ_Y.z;
+    const rotatedXYZ = rotateX(rotatedY, rotatedZ, rotationAngleX);
+    rotatedY = rotatedXYZ.y;
+    rotatedZ = rotatedXYZ.z;
 
     let targetX = centerX + rotatedX;
     let targetY = centerY + rotatedY;
@@ -127,7 +113,7 @@ function drawGroup(ctx, group) {
     ctx.beginPath();
     ctx.arc(posX, posY, radius / 2, 0, Math.PI * 2);
 
-    const glowStrength = lerp(75, 120, easedDepth);
+    const glowStrength = lerp(40, 100, easedDepth);
     const alpha = lerp(0.3, 1, easedDepth);
 
     ctx.shadowColor = p.color;
@@ -139,7 +125,10 @@ function drawGroup(ctx, group) {
   });
 }
 
-function drawParticles() {
+function drawParticles(timestamp) {
+  if (!startTime) startTime = timestamp;
+  const elapsed = timestamp - startTime;
+
   if (mouse.x !== null && mouse.y !== null) {
     smoothedMouse.x = lerp(smoothedMouse.x, mouse.x, 0.1);
     smoothedMouse.y = lerp(smoothedMouse.y, mouse.y, 0.1);
@@ -152,13 +141,12 @@ function drawParticles() {
   const backParticles = sortedParticles.filter(p => ((Math.sin(p.angle) + 1) / 2) <= 0.5);
   const frontParticles = sortedParticles.filter(p => ((Math.sin(p.angle) + 1) / 2) > 0.5);
 
-  drawGroup(ctxBack, backParticles);
-  drawGroup(ctxFront, frontParticles);
+  drawGroup(ctxBack, backParticles, elapsed);
+  drawGroup(ctxFront, frontParticles, elapsed);
 }
 
-function animate() {
-  rotationY += yRotationSpeed;
-  drawParticles();
+function animate(timestamp) {
+  drawParticles(timestamp);
   requestAnimationFrame(animate);
 }
 

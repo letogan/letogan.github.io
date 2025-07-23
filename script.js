@@ -5,8 +5,8 @@ const ctxFront = canvasFront.getContext('2d');
 
 let width, height, centerX, centerY;
 
-const orbitRadiusX = 600;
-const orbitRadiusY = 300;
+const orbitRadiusX = 550;
+const orbitRadiusY = 250;
 const particleCount = 10;
 const particles = [];
 const colors = ['#edab54', 'white'];

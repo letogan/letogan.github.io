@@ -217,7 +217,7 @@ footer {
   gap: 40px;
   justify-content: space-between;
   align-items: center;
-  max-width: 1400px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -249,7 +249,7 @@ footer {
 
 .footer-links {
   flex: 2;
-  min-width: 250px;
+  min-width: 150px;
   display: flex;
   gap: 64px;
   flex-wrap: wrap;
@@ -279,10 +279,10 @@ footer {
 }
 
 .footer-divider {
-  width: 100%;
+  width: 1100px;
   height: 1px;
   background-color: #666;
-  margin: 32px 0;
+  margin: 32px auto;
 }
 
 .footer-copyright {

@@ -133,7 +133,7 @@ function drawOrbit(ctx, orbitX, orbitY, angleZ, angleX, yRotation, alpha = 1) {
     }
   }
   ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
-  ctx.lineWidth = 1;
+  ctx.lineWidth = 0.7;
   ctx.stroke();
   ctx.restore();
 }
@@ -237,3 +237,4 @@ function animate(timestamp) {
 resize();
 createParticles();
 requestAnimationFrame(animate);
+

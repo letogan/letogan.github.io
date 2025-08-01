@@ -61,7 +61,7 @@ function lerp(a, b, t) {
 function createParticles() {
   for (let i = 0; i < particleCount; i++) {
     const angle = (Math.PI * 2 / particleCount) * i;
-    const size = Math.random() * 110 + 100;
+    const size = Math.random() * 120 + 110;
     particles.push({
       angle: angle,
       progress: 0,
@@ -72,7 +72,7 @@ function createParticles() {
 
   for (let i = 0; i < 8; i++) {
     const angle = (Math.PI * 2 / 8) * i;
-    const size = Math.random() * 100 + 80;
+    const size = Math.random() * 100 + 90;
     particlesRing2.push({
       angle: angle,
       progress: 0,
@@ -133,7 +133,7 @@ function drawOrbit(ctx, orbitX, orbitY, angleZ, angleX, yRotation, alpha = 1) {
     }
   }
   ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
-  ctx.lineWidth = 1.5; // Hier kannst du Orbit-Linienstärke anpassen
+  ctx.lineWidth = 1;
   ctx.stroke();
   ctx.restore();
 }
@@ -179,8 +179,8 @@ function drawGroup(ctx, group, elapsed, orbitX, orbitY, ringSpeed, rotationOffse
     ctx.beginPath();
     ctx.arc(posX, posY, radius / 2, 0, Math.PI * 2);
     ctx.shadowColor = p.color;
-    ctx.shadowBlur = lerp(80, 150, easedDepth); // 50% stärkerer Glow
-    ctx.globalAlpha = 1; // dauerhaft maximale Helligkeit
+    ctx.shadowBlur = lerp(80, 150, easedDepth);
+    ctx.globalAlpha = 1;
     ctx.fillStyle = p.color;
     ctx.fill();
     ctx.restore();
@@ -204,7 +204,6 @@ function drawParticles(timestamp) {
   ctxBack.clearRect(0, 0, width, height);
   ctxFront.clearRect(0, 0, width, height);
 
-  // Linie alpha nach Startzeit steuern (ab 1500ms einblenden)
   let lineAlpha = 0;
   if (elapsed > 1500) {
     lineAlpha = 1;

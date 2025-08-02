@@ -35,7 +35,7 @@ body {
   position: relative;
   width: 100%;
   z-index: 10;
-  background-color: #111117;
+  background-color: transparent;
   height: 80px;
   max-width: 1400px;
   margin: 0 auto;
@@ -165,7 +165,7 @@ header {
 .keks-cloud-logo {
   position: absolute;
   top: 50vh;
-  left: 57%;
+  left: 50%;
   transform: translate(-50%, -50%);
   font-size: 80px;
   font-weight: 700;
@@ -190,6 +190,7 @@ header {
   pointer-events: none;
   z-index: 1;
   animation: spin 100000000000s linear infinite;
+  opacity: 0;
 }
 
 @keyframes spin {

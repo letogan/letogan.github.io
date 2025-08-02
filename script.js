@@ -1,5 +1,3 @@
-Die Partikel des inneren orbits sind im Vordergrund eine ebene vor den Orbitlinien des äußeren orbits - physikalisch ist das nicht möglich korrigiere das bitte - meiner ansicht nach musst du dabei nur die Anordnung der Ebenen des äußeren Orbits ändern. 
-
 const canvasBack = document.getElementById('particleCanvasBack');
 const ctxBack = canvasBack.getContext('2d');
 const canvasFront = document.getElementById('particleCanvasFront');

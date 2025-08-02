@@ -1,3 +1,5 @@
+Die Partikel des inneren orbits sind im Vordergrund eine ebene vor den Orbitlinien des äußeren orbits - physikalisch ist das nicht möglich korrigiere das bitte - meiner ansicht nach musst du dabei nur die Anordnung der Ebenen des äußeren Orbits ändern. 
+
 const canvasBack = document.getElementById('particleCanvasBack');
 const ctxBack = canvasBack.getContext('2d');
 const canvasFront = document.getElementById('particleCanvasFront');
@@ -7,8 +9,8 @@ let width, height, centerX, centerY;
 
 const outerOrbitRadiusX = 600;
 const outerOrbitRadiusY = 300;
-const innerOrbitRadiusX = 400;
-const innerOrbitRadiusY = 200;
+const innerOrbitRadiusX = 500;
+const innerOrbitRadiusY = 250;
 
 const particleCount = 10;
 const particles = [];
@@ -133,7 +135,7 @@ function drawOrbit(ctx, orbitX, orbitY, angleZ, angleX, yRotation, alpha = 1) {
     }
   }
   ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
-  ctx.lineWidth = 0.4;
+  ctx.lineWidth = 1;
   ctx.stroke();
   ctx.restore();
 }
@@ -237,5 +239,3 @@ function animate(timestamp) {
 resize();
 createParticles();
 requestAnimationFrame(animate);
-
-

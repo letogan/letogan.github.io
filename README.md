@@ -1,3 +1,3 @@
-# work in progress - build 1.60
+# work in progress - build 1.6
 
 https://kekscloud.com
